@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping(value = "/first")
@@ -14,8 +15,12 @@ public class FirstController {
 
 	/** 列表 */
 	@RequestMapping
-	public String index(HttpServletRequest request, HttpServletResponse response) {
-		return "index_get";
+	public ModelAndView index(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("index");
+		ModelAndView view = new ModelAndView();
+		view.setViewName("index");
+		view.addObject("h", "hello timy");
+		return view;
 	}
 
 	/** 进入新增 */
